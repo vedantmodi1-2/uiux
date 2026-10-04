@@ -1,0 +1,54 @@
+Practical 5: Counter Using ReactJS
+Aim: To create a counter using ReactJS.
+Requirements: Node.js and npm installed. A React project with App.js and App.css.
+Procedure / How to Run
+1. Open Command Prompt/Terminal.
+2. Create or open a React project. For a new Create React App project, run npx create-react-app counter and then
+cd counter.
+3. Replace src/App.js and src/App.css with the code below.
+4. Run npm start.
+5. Open the local URL shown in the terminal.
+6. Click Increment, Decrement, and Reset to test the counter.
+Program Code
+src/App.js
+import React, { useState } from "react";
+import "./App.css";
+function App() {
+ const [count, setCount] = useState(0);
+ return (
+ <div className="counter">
+ <h1>Counter</h1>
+ <h2>{count}</h2>
+ <div className="buttons">
+ <button onClick={() => setCount(count + 1)}>
+ Increment
+ </button>
+ <button onClick={() => setCount(count - 1)}>
+ Decrement
+ </button>
+ <button onClick={() => setCount(0)}>
+ Reset
+ </button>
+ </div>
+ </div>
+ );
+}
+export default App;
+src/App.css
+.counter {
+ text-align: center;
+ margin-top: 100px;
+ font-family: Arial, sans-serif;
+}
+.counter h2 {
+ font-size: 50px;
+ margin: 20px;
+}
+.buttons button {
+ margin: 5px;
+ padding: 10px 18px;
+ font-size: 16px;
+ cursor: pointer;
+}
+Expected Output / Result
+The counter starts at 0. Increment increases the value, Decrement decreases it, and Reset sets it back to 0.

@@ -1,0 +1,151 @@
+AIM: To create Form validation using JavaScript.
+Procedure:
+1. Project Setup
+• Create HTML Structure:
+o Create an HTML file (e.g., form_validation.html) with the following:
+▪ A form element (<form>) with an appropriate id (e.g., myForm).
+▪ Input fields for each data point (e.g., name, email, phone).
+▪ A submit button (<button type="submit">).
+2. JavaScript Implementation
+• Create a JavaScript file (e.g., script.js) and link it to your HTML file.
+• Define Validation Functions:
+o Create separate functions for each validation rule (e.g., validateName(),
+validateEmail(), validatePhone()).
+o Implement the logic for each validation rule within the respective functions.
+▪ Example:
+▪ validateName(): Check if the name field is not empty and
+contains only letters and spaces.
+▪ validateEmail(): Check if the email field follows the standard
+email format (e.g., using a regular expression).
+▪ validatePhone(): Check if the phone number field contains only
+digits and is of the correct length.
+• Event Handling:
+o Attach an event listener to the form's submit event.
+o Inside the event handler:
+▪ Call all the validation functions for each input field.
+▪ If any validation fails:
+▪ Display an appropriate error message (e.g., within the span
+element).
+▪ Prevent the form from submitting (using event.preventDefault()).
+▪ If all validations pass:
+▪ Submit the form (allow the default form submission behavior).
+3. Test the Application
+Program
+<html>
+<head>
+<script>
+function VALIDATEDETAIL()
+{
+ var name = document.forms["RegForm"]["Name"];
+ var email = document.forms["RegForm"]["EMail"];
+ var phone = document.forms["RegForm"]["Telephone"];
+ var what = document.forms["RegForm"]["Subject"];
+ var password = document.forms["RegForm"]["Password"];
+ var address = document.forms["RegForm"]["Address"];
+if (name.value == "")
+ {
+ window.alert("Please enter your name.");
+ name.focus();
+ return false;
+ }
+
+ if (address.value == "")
+ {
+ window.alert("Please enter your address.");
+ name.focus();
+ return false;
+ }
+
+ if (email.value == "")
+ {
+ window.alert("Please enter a valid e
+-mail address.");
+ email.focus();
+ return false;
+ }
+
+ if (email.value.indexOf("@", 0) < 0)
+{
+ window.alert("Please enter a valid e
+-mail address.");
+ email.focus();
+ return false;
+ }
+ if (email.value.indexOf(".", 0) < 0)
+ {
+ window.alert("Please enter a valid e
+-mail address.");
+ email.focus();
+ return false;
+ }
+ if (phone.value == "")
+ {
+ window.alert("Please enter your telephone number.");
+ phone.focus();
+ return false;
+ }
+ if (password.value == "")
+ {
+ window.alert("Please enter your password");
+ password.focus();
+ return flase;
+ }
+
+ if (what.selectedIndex < 1)
+ {
+ alert("Please enter your course.");
+ what.focus();
+ return false; 
+}
+
+ return true;
+}</script>
+ <style>
+VALIDATEDETAIL {
+ font-weight: bold ;
+ float: left;
+ width: 100px;
+ text-align: left;
+ margin-right: 10px;
+ font-size:14px;
+}
+
+div {
+box-sizing: border-box;
+ width: 100%;
+ border: 100px solid black;
+ float: left;
+ align-content: center;
+ align-items: center;
+}
+
+form {
+ margin: 0 auto;
+ width: 600px;
+}</style></head>
+
+<body>
+<h1 style="text-align: center"> REGISTRATION FORM </h1>
+<form name="RegForm" action="submit.php" onsubmit="return VALIDATEDETAIL()"
+method="post">
+
+ <p>Name: <input type="text" size=65 name="Name"> </p><br>
+ <p> Address: <input type="text" size=65 name="Address"> </p><br>
+ <p>E-mail Address: <input type="text" size=65 name="EMail"> </p><br>
+ <p>Password: <input type="text" size=65 name="Password"> </p><br>
+ <p>Telephone: <input type="text" size=65 name="Telephone"> </p><b
+>SELECT YOUR COURSE
+ <select type="text" value="" name="Subject">
+ <option>BTECH</option>
+ <option>BBA</option>
+ <option>BCA</option>
+ <option>B.COM</option>
+ <option>VALIDATEDETAIL</option>
+ </select></p><br><br>
+ <p>Comments: <textarea cols="55" name="Comment"> </textarea></p>
+ <p><input type="submit" value="send" name="Submit">
+ <input type="reset" value="Reset" name="Reset
+</p>
+</form>
+</body>
+</html>

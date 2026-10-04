@@ -1,0 +1,125 @@
+Write a program to create a simple calculator Application using React JS
+Creating a simple calculator application using React JS involves using React components, managing state, and handling events like button clicks. 
+
+App.js
+import React, { useState } from 'react';
+import './App.css';
+function App() {
+// State to store the current value, operation, and previous value
+const [currentInput, setCurrentInput] = useState('');
+const [previousInput, setPreviousInput] = useState('');
+const [operation, setOperation] = useState('');
+// Function to handle number button clicks
+const handleNumberClick = (number) => {
+setCurrentInput(currentInput + number);
+};
+// Function to handle operation button clicks (+, -, *, /)
+const handleOperationClick = (operator) => {
+setOperation(operator);
+setPreviousInput(currentInput);
+setCurrentInput('');
+};
+// Function to clear the current input
+const handleClear = () => {
+setCurrentInput('');
+setPreviousInput('');
+setOperation('');
+};
+// Function to evaluate the result of the current operation
+const handleEvaluate = () => {
+if (previousInput && operation && currentInput) {
+const prev = parseFloat(previousInput);
+const current = parseFloat(currentInput);
+let result;
+// Perform the operation
+switch (operation) {
+case '+':
+result = prev + current;
+break;
+case '-':
+result = prev - current;
+break;
+case '*':
+result = prev * current;
+break;
+case '/':
+result = prev / current;
+break;
+default:
+return;
+}
+// Set the result to the current input and clear operation and previous input
+setCurrentInput(result.toString());
+setPreviousInput('');
+setOperation('');
+}
+};
+// Rendering the calculator UI
+return (
+<div className="calculator">
+<div className="display">
+<div className="previous-input">
+{previousInput} {operation}
+</div>
+<div className="current-input">{currentInput}</div>
+</div>
+<div className="buttons">
+<button onClick={() => handleNumberClick('7')}>7</button>
+<button onClick={() => handleNumberClick('8')}>8</button>
+<button onClick={() => handleNumberClick('9')}>9</button>
+<button onClick={() => handleOperationClick('/')}>/</button>
+<button onClick={() => handleNumberClick('4')}>4</button>
+<button onClick={() => handleNumberClick('5')}>5</button>
+<button onClick={() => handleNumberClick('6')}>6</button>
+<button onClick={() => handleOperationClick('*')}>*</button>
+<button onClick={() => handleNumberClick('1')}>1</button>
+<button onClick={() => handleNumberClick('2')}>2</button>
+<button onClick={() => handleNumberClick('3')}>3</button>
+<button onClick={() => handleOperationClick('-')}>-</button>
+<button onClick={() => handleNumberClick('0')}>0</button>
+<button onClick={handleClear}>C</button>
+<button onClick={handleEvaluate}>=</button>
+<button onClick={() => handleOperationClick('+')}>+</button>
+</div>
+</div>
+);
+}
+export default App;
+
+App.css:
+.calculator {
+width: 260px;
+margin: 100px auto;
+background-color: #f4f4f4;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.display {
+text-align: right;
+margin-bottom: 20px;
+}
+.previous-input {
+font-size: 16px;
+color: #888;
+}
+.current-input {
+font-size: 32px;
+font-weight: bold;
+}
+.buttons button {
+width: 50px;
+height: 50px;
+margin: 5px;
+font-size: 18px;
+border: 1px solid #ccc;
+background-color: #fff;
+cursor: pointer;
+border-radius: 5px;
+}
+.buttons button:hover {
+background-color: #f0f0f0;
+}
+.buttons button:active {
+background-color: #ddd;
+}
